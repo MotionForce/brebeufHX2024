@@ -23,10 +23,11 @@ model User {
 }
 
 model Post {
-  id    Int     @id @unique @default(autoincrement())
-  title String
-  body  String
-  Reply Reply[]
+  id      Int          @id @unique @default(autoincrement())
+  title   String
+  body    String
+  Reply   Reply[]
+  warning WarningLevel @default(UNTESTED)
 
   createdAt DateTime @default(now())
   User      User?    @relation(fields: [userId], references: [id])
@@ -61,4 +62,11 @@ model Key {
   user            User    @relation(references: [id], fields: [user_id], onDelete: Cascade)
 
   @@index([user_id])
+}
+
+enum WarningLevel {
+  LOW
+  MEDIUM
+  HIGH
+  UNTESTED
 }
