@@ -20,6 +20,7 @@ export const load: PageServerLoad = async ({ locals, url }) => {
     const session = await locals.auth.validate();
     if (!session) throw redirect(302, "/login");
     let interest = await prisma.user.findUnique({ where: { id: session.user.userId }, select: { interest: true } })
+    let post = await prisma.user.findUnique({ where: { id: session.user.userId }, select: { Post: true } })
     return {
         userId: session.user.userId,
         username: session.user.username,

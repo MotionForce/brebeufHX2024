@@ -22,7 +22,11 @@
   >
     <div class="flex flex-row items-center space-x-4">
       {#if data.post.User !== null}
-        <a href={`/profile?id=${data.post.User.id}`}>
+        <a
+          href={data.post.User.id === data.userId
+            ? "/profile"
+            : `/profile?id=${data.post.User.id}`}
+        >
           <Avatar
             src={"data:image/svg+xml;utf8," +
               encodeURIComponent(minidenticon(data.post.User.username, 60, 50))}
