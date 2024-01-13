@@ -19,12 +19,14 @@ export const load: PageServerLoad = async ({ locals, url }) => {
     }
     const session = await locals.auth.validate();
     if (!session) throw redirect(302, "/login");
-    let interest = await prisma.user.findUnique({ where: { id: session.user.userId }, select: { interest: true } })
-    let post = await prisma.user.findUnique({ where: { id: session.user.userId }, select: { Post: true } })
+    const user_id = session.user.userId;
+    const interest = await prisma.user.findUnique({ where: { id: session.user.userId }, select: { interest: true } })
+    const post = await prisma.user.findMany({ where: { id: user_id }, select: { Post: { select: { id: true, title: true, body: true, warning: true, User: { select: { id: true, username: true } }, Reply: { select: { id: true } } } } }, orderBy: { createdAt: "desc" } })
     return {
         userId: session.user.userId,
         username: session.user.username,
         interests: interest?.interest,
+        post: post[0]["Post"],
         signout: true,
     };
 };

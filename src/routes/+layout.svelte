@@ -2,6 +2,7 @@
   import "../app.postcss";
   import { AppShell } from "@skeletonlabs/skeleton";
   import NavBar from "$lib/components/NavBar.svelte";
+  import Particles from "$lib/components/Particles.svelte";
 
   // Floating UI for Popups
   import {
@@ -13,6 +14,7 @@
     arrow,
   } from "@floating-ui/dom";
   import { storePopup } from "@skeletonlabs/skeleton";
+
   storePopup.set({ computePosition, autoUpdate, flip, shift, offset, arrow });
 
   export let data;
@@ -27,7 +29,12 @@
   <!-- (pageHeader) -->
   <!-- Router Slot -->
   <div class="scroll-smooth">
-    <slot />
+    <div class="-z-10">
+      <Particles />
+    </div>
+    <div class="z-10">
+      <slot />
+    </div>
   </div>
   <!-- ---- / ---- -->
   <svelte:fragment slot="pageFooter">

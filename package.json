@@ -35,12 +35,13 @@
     "@floating-ui/dom": "1.5.4",
     "@lucia-auth/adapter-prisma": "^3.0.2",
     "@prisma/client": "5.8.0",
-    "@sveltejs/adapter-node": "^3.0.0",
+    "@tsparticles/svelte": "^3.0.0",
     "lucia": "^2.7.6",
     "minidenticons": "^4.2.0",
     "node-fetch": "^3.3.2",
     "pretty-easy-dates": "^1.0.1",
     "svelte-legos": "^0.2.2",
+    "tsparticles": "^3.0.3",
     "weaviate-ts-client": "^2.0.0"
   }
 }
