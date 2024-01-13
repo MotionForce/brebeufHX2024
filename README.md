@@ -1,4 +1,4 @@
-### Brébeuf Nature Science Council
+# Brébeuf Nature Science Council
 Connect people based on their interests using AI. 
 
 ## Installation
