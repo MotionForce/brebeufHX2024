@@ -25,6 +25,9 @@ export const load = (async ({ locals }) => {
     const similar_users_id = await get_personalised_posts(final_interest_query);
     let similar_users_objects: any = [];
     for (let i in similar_users_id){
+        if (similar_users_id[i] === user_id){
+            continue;
+        }
         const user = await prisma.user.findFirst({
             where:{
                 id: similar_users_id[i]

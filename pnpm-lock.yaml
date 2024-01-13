@@ -14,6 +14,9 @@ dependencies:
   '@prisma/client':
     specifier: 5.8.0
     version: 5.8.0(prisma@5.8.0)
+  '@sveltejs/adapter-node':
+    specifier: ^3.0.0
+    version: 3.0.0(@sveltejs/kit@2.3.0)
   '@tsparticles/svelte':
     specifier: ^3.0.0
     version: 3.0.0(svelte@4.2.8)

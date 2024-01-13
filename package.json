@@ -35,6 +35,7 @@
     "@floating-ui/dom": "1.5.4",
     "@lucia-auth/adapter-prisma": "^3.0.2",
     "@prisma/client": "5.8.0",
+    "@sveltejs/adapter-node": "^3.0.0",
     "@tsparticles/svelte": "^3.0.0",
     "lucia": "^2.7.6",
     "minidenticons": "^4.2.0",
