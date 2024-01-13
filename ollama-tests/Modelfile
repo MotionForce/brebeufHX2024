@@ -1,2 +1,2 @@
-FROM ./model.gguf
+FROM ./mistral.gguf
 TEMPLATE "[INST] {{ .Prompt }} [/INST]"

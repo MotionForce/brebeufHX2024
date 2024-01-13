@@ -37,8 +37,9 @@
     "@prisma/client": "5.8.0",
     "lucia": "^2.7.6",
     "minidenticons": "^4.2.0",
-    "pretty-easy-dates": "^1.0.1",
     "node-fetch": "^3.3.2",
-    "svelte-legos": "^0.2.2"
+    "pretty-easy-dates": "^1.0.1",
+    "svelte-legos": "^0.2.2",
+    "weaviate-ts-client": "^2.0.0"
   }
 }

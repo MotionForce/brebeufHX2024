@@ -67,7 +67,7 @@ async function query_llm(text: string){
         const answer: string = result.response;
         const trimed = answer.trim();
         console.log(trimed);
-        if (!trimed.startsWith("N.")){
+        if (!trimed.includes("N")){
             most_severe = "HIGH";
         }
     }
