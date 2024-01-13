@@ -1,0 +1,1 @@
+tell me if the following body of text contains hatespeech: "". If this body of text contains hatespeech, asnwer with the letter Y. If this body of text does not contain hatespeech, answer with the letter N. Only output one letter and nothing else.
