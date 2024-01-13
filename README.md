@@ -6,6 +6,7 @@ Connect people based on their interests using AI.
 ```txt
 DATABASE_URL=postgresql://username:password@host:port/mydb?schema=your_schema
 ```
+* Setup Ollama to work with the website's API.
 * Clone the GitHub repo.
 ```git
 git clone https://github.com/MotionForce/brebeufHX2024/
