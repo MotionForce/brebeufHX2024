@@ -65,15 +65,17 @@
           <header class="card-header">
             <div class="flex flex-row items-center space-x-4">
               {#if post.User !== null}
-                <Avatar
-                  src={"data:image/svg+xml;utf8," +
-                    encodeURIComponent(
-                      minidenticon(post.User.username, 60, 50),
-                    )}
-                  width="w-12"
-                  rounded="rounded-full"
-                  border="border-2"
-                />
+                <a href={`/profile?id=${post.User.id}`}>
+                  <Avatar
+                    src={"data:image/svg+xml;utf8," +
+                      encodeURIComponent(
+                        minidenticon(post.User.username, 60, 50),
+                      )}
+                    width="w-12"
+                    rounded="rounded-full"
+                    border="border-2"
+                  />
+                </a>
               {/if}
               <h2 class="h2">{post.title}</h2>
               <span class="chip h-full variant-filled rounded-3xl">

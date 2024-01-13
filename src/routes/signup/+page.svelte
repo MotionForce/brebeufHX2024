@@ -1,8 +1,12 @@
 <script lang="ts">
   import { enhance } from "$app/forms";
+  import { InputChip } from "@skeletonlabs/skeleton";
+
+  let interests: string[] = [];
 
   $: username = "";
   $: password = "";
+  $: str_interests = interests.join("|&%&|")
 </script>
 
 <div
@@ -49,6 +53,13 @@
         }`}
       />
     </label>
+    <hr />
+    <InputChip
+      bind:value={interests}
+      name="chips"
+      placeholder="Enter your interests..."
+    />
+    <input hidden class="input" type="text" name="interest" bind:value={str_interests} />
     <button class="btn variant-filled">Submit</button>
   </form>
   <a

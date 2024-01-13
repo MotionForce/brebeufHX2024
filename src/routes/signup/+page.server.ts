@@ -15,7 +15,7 @@ export const actions: Actions = {
         const formData = await request.formData();
         const username = formData.get("username");
         const password = formData.get("password");
-        // basic check
+        const interests = formData.get("interest")?.toString().split("|&%&|");
         if (
             typeof username !== "string" ||
             username.length < 4 ||
@@ -30,25 +30,27 @@ export const actions: Actions = {
         ) {
             error(400, "Invalid password");
         }
+        if (typeof interests !== "object" || interests.length < 1) {
+            error(400, "Error reading interests.")
+        }
         try {
             const user = await auth.createUser({
                 key: {
-                    providerId: "username", // auth method
-                    providerUserId: username.toLowerCase(), // unique id when using "username" auth method
-                    password // hashed by Lucia
+                    providerId: "username",
+                    providerUserId: username.toLowerCase(),
+                    password
                 },
                 attributes: {
                     username,
+                    interest: interests,
                 }
             });
             const session = await auth.createSession({
                 userId: user.userId,
                 attributes: {}
             });
-            locals.auth.setSession(session); // set session cookie
+            locals.auth.setSession(session);
         } catch (e) {
-            // this part depends on the database you're using
-            // check for unique constraint error in user table
             if (
                 e instanceof PrismaClientKnownRequestError &&
                 e.code === "P2002"
@@ -57,8 +59,6 @@ export const actions: Actions = {
             }
             error(500, "An unknown error occurred");
         }
-        // redirect to
-        // make sure you don't throw inside a try/catch block!
         throw redirect(302, "/");
     }
 };
