@@ -14,14 +14,13 @@
       <iconify-icon icon="" width="30"></iconify-icon>
     </a>
   </svelte:fragment>
-  <a class="h1 font-bold" href="/">Conseil science de la nature Brébeuf</a>
+  <a class="h1 font-bold" href="/">Brébeuf Nature Science Council</a>
   <svelte:fragment slot="trail">
     {#if session_status === false}
       <a href="/signup" class="btn variant-filled">Signup</a>
-      <!-- TODO: LOGIN PAGE -->
     {:else}
+      <a href="/create-post" class="btn variant-ghost-primary">Create post</a>
       <a href="/profile">
-        <!-- TODO: PROFILE PAGE -->
         <Avatar
           src={"data:image/svg+xml;utf8," +
             encodeURIComponent(minidenticon(username, 60, 50))}
