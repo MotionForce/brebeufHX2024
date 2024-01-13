@@ -3,14 +3,21 @@
   import type { PageData } from "./$types";
   import { Avatar } from "@skeletonlabs/skeleton";
   import { default as prettyDate } from "pretty-easy-dates";
+  import { enhance } from "$app/forms";
+
+  function onReplyClickHandler() {
+    show_reply_box = !show_reply_box;
+  }
+
+  let reply: String;
+  let show_reply_box = false;
 
   export let data: PageData;
+  $: post_id = data.post.id;
 </script>
 
-<div class="m-16">
-  <div
-    class="p-16 flex flex-col space-y-5 variant-filled-primary rounded-3xl"
-  >
+<div class="m-16 flex flex-col">
+  <div class="p-16 mb-8 flex flex-col space-y-5 variant-filled-primary rounded-3xl">
     <div class="flex flex-row items-center space-x-4">
       {#if data.post.User !== null}
         <Avatar
@@ -31,7 +38,9 @@
   </div>
 
   {#each data.post.Reply as reply}
-    <div class="m-8 ml-16 mr-0 px-16 py-4 mt-4 flex flex-col space-y-5 variant-ghost-secondary rounded-3xl">
+    <div
+      class="m-8 ml-16 mr-0 px-16 py-4 mt-4 flex flex-col space-y-5 variant-ghost-secondary rounded-3xl"
+    >
       <div class="flex flex-row items-center space-x-4">
         {#if reply.User !== null}
           <Avatar
@@ -50,4 +59,29 @@
       {/if}
     </div>
   {/each}
+  <button
+    class={`${
+      show_reply_box ? "hidden" : "btn variant-ghost-tertiary max-w-12 self-end"
+    }`}
+    on:click={onReplyClickHandler}>Reply</button
+  >
+  <form
+    method="POST"
+    action="?/reply"
+    class={`${
+      show_reply_box ? "inline-flex" : "hidden"
+    } m-4 ml-16 mr-0 px-8 py-2 mt-4 flex flex-row space-x-5 variant-ghost-secondary rounded-3xl`}
+    use:enhance
+  >
+    <textarea
+      placeholder="Enter the reply."
+      name="reply"
+      rows="4"
+      class="textarea rounded-xl"
+    ></textarea>
+    <input type="number" name="post_id" bind:value={post_id} hidden />
+    <button type="submit" class="btn variant-filled place-self-center"
+      >Send reply</button
+    >
+  </form>
 </div>

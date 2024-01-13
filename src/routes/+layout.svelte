@@ -29,7 +29,7 @@
   <slot />
   <!-- ---- / ---- -->
   <svelte:fragment slot="pageFooter">
-    <footer class="p-2 bg-surface-100-800-token">
+    <footer class="p-2 px-4 bg-surface-100-800-token">
       Copyright Andrey Kovalskiy and Émilien Lavallée 2024. All rights reserved.
     </footer>
   </svelte:fragment>
