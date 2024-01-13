@@ -17,6 +17,6 @@ export const actions: Actions = {
         const session = await locals.auth.validate();
         if (reply === undefined || session === null) error(400, "The title or the body of the post, or the user information, was not processed correctly");
         const res = await prisma.reply.create({ data: { body: reply, User: { connect: { id: session.user.userId } }, Post: { connect: { id: id } } } })
-        throw redirect(302, "#");
+        throw redirect(302, "");
     }
 }

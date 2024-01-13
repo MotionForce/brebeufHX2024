@@ -16,8 +16,12 @@
   $: post_id = data.post.id;
 </script>
 
+<!-- TODO: REPLY MODERATION -->
+
 <div class="m-16 flex flex-col">
-  <div class="p-16 mb-8 flex flex-col space-y-5 variant-filled-primary rounded-3xl">
+  <div
+    class="p-16 mb-8 flex flex-col space-y-5 variant-filled-primary rounded-3xl"
+  >
     <div class="flex flex-row items-center space-x-4">
       {#if data.post.User !== null}
         <Avatar
@@ -36,7 +40,6 @@
       <p class="text-md">By {data.post.User.username}</p>
     {/if}
   </div>
-
   {#each data.post.Reply as reply}
     <div
       class="m-8 ml-16 mr-0 px-16 py-4 mt-4 flex flex-col space-y-5 variant-ghost-secondary rounded-3xl"

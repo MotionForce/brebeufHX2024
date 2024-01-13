@@ -14,7 +14,7 @@
       <iconify-icon icon="" width="30"></iconify-icon>
     </a>
   </svelte:fragment>
-  <a class="h1 font-bold" href="/">Brébeuf Nature Science Council</a>
+  <a class="h2 font-bold" href="/">Brébeuf Nature Science Council</a>
   <svelte:fragment slot="trail">
     {#if session_status === false}
       <a href="/signup" class="btn variant-filled">Signup</a>

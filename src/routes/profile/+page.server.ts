@@ -17,6 +17,7 @@ export const actions: Actions = {
         const session = await locals.auth.validate();
         if (!session) error(401);
         await auth.invalidateSession(session.sessionId);
+        await auth.deleteDeadUserSessions(session.user.userId);
         locals.auth.setSession(null);
         throw redirect(302, "/login");
     }
