@@ -8,7 +8,7 @@
 
 <a href={`/${post.id}`}>
   <div
-    class="m-16 card card-hover border-2 border-surface-500-400-token p-4 variant-filled-surface"
+    class="m-16 card card-hover border-2 border-surface-500-400-token p-4 variant-ghost-primary"
   >
     <header class="card-header">
       <div class="flex flex-row items-center space-x-4">

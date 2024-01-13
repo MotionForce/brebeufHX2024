@@ -14,7 +14,7 @@
 
 {#if data.similar_users === null}<br />{:else}
   <div
-    class="mx-32 my-8 card border-2 border-surface-400-500-token p-6 bg-surface-500-400-token flex flex-col space-y-4 overflow-x-scroll"
+    class="mx-32 my-8 card border-2 border-surface-400-500-token p-6 variant-filled-surface flex flex-col space-y-4 overflow-x-scroll"
   >
     <p class="font-bold">Users with similar interests</p>
     <div class="flex flex-row space-x-5">
@@ -60,7 +60,7 @@
           </div>
         </div>
         <div
-          class="m-16 blur card card-hover p-4 variant-filled-surface border-2"
+          class="m-16 blur card card-hover p-4 variant-ghost-primary border-2"
         >
           <header class="card-header">
             <div class="flex flex-row items-center space-x-4">
