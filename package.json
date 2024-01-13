@@ -21,6 +21,7 @@
     "@types/node": "20.10.8",
     "autoprefixer": "10.4.16",
     "postcss": "8.4.33",
+    "prisma": "^5.8.0",
     "svelte": "^4.2.7",
     "svelte-check": "^3.6.0",
     "tailwindcss": "3.4.1",
@@ -32,6 +33,9 @@
   "type": "module",
   "dependencies": {
     "@floating-ui/dom": "1.5.4",
+    "@lucia-auth/adapter-prisma": "^3.0.2",
+    "@prisma/client": "5.8.0",
+    "lucia": "^2.7.6",
     "minidenticons": "^4.2.0",
     "svelte-legos": "^0.2.2"
   }
