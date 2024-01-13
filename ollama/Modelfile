@@ -1,0 +1,2 @@
+FROM ./model.gguf
+TEMPLATE "[INST] {{ .Prompt }} [/INST]"
