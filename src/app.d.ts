@@ -36,6 +36,7 @@ declare global {
 			username: string;
 			Post: post[];
 			Reply: reply[];
+			interest: string[];
 		};
 	}
 	namespace App {

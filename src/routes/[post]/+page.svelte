@@ -16,21 +16,21 @@
   $: post_id = data.post.id;
 </script>
 
-<!-- TODO: REPLY MODERATION -->
-
 <div class="m-16 flex flex-col">
   <div
     class="p-16 mb-8 flex flex-col space-y-5 variant-filled-primary rounded-3xl"
   >
     <div class="flex flex-row items-center space-x-4">
       {#if data.post.User !== null}
-        <Avatar
-          src={"data:image/svg+xml;utf8," +
-            encodeURIComponent(minidenticon(data.post.User.username, 60, 50))}
-          width="w-12"
-          rounded="rounded-full"
-          border="border-2"
-        />
+        <a href={`/profile?id=${data.post.User.id}`}>
+          <Avatar
+            src={"data:image/svg+xml;utf8," +
+              encodeURIComponent(minidenticon(data.post.User.username, 60, 50))}
+            width="w-12"
+            rounded="rounded-full"
+            border="border-2"
+          />
+        </a>
       {/if}
       <h2 class="h2">{data.post.title}</h2>
     </div>
@@ -41,26 +41,41 @@
     {/if}
   </div>
   {#each data.post.Reply as reply}
-    <div
-      class="m-8 ml-16 mr-0 px-16 py-4 mt-4 flex flex-col space-y-5 variant-ghost-secondary rounded-3xl"
-    >
-      <div class="flex flex-row items-center space-x-4">
+    {#if reply.warning !== "LOW" && reply.warning !== "UNTESTED"}
+      <div
+        class="m-8 ml-16 mr-0 px-16 py-4 mt-4 flex flex-col space-y-5 variant-ghost-secondary rounded-3xl"
+      >
+        This reply by {reply.User.username} has been flagged as potentionaly NSFW
+        or disrespectful.
+      </div>
+    {:else}
+      <div
+        class="m-8 ml-16 mr-0 px-16 py-4 mt-4 flex flex-col space-y-5 variant-ghost-secondary rounded-3xl"
+      >
+        <div class="flex flex-row items-center space-x-4">
+          {#if reply.User !== null}
+            <a
+              href={reply.User.id === data.userId
+                ? "/profile"
+                : `/profile?id=${reply.User.id}`}
+            >
+              <Avatar
+                src={"data:image/svg+xml;utf8," +
+                  encodeURIComponent(minidenticon(reply.User.username, 60, 50))}
+                width="w-12"
+                rounded="rounded-full"
+                border="border-2"
+              />
+            </a>
+          {/if}
+        </div>
+        <p class="text-xs">{prettyDate(reply.createdAt)["now"]}</p>
+        <p class="text-lg">{reply.body}</p>
         {#if reply.User !== null}
-          <Avatar
-            src={"data:image/svg+xml;utf8," +
-              encodeURIComponent(minidenticon(reply.User.username, 60, 50))}
-            width="w-12"
-            rounded="rounded-full"
-            border="border-2"
-          />
+          <p class="text-sm">By {reply.User.username}</p>
         {/if}
       </div>
-      <p class="text-xs">{prettyDate(reply.createdAt)["now"]}</p>
-      <p class="text-lg">{reply.body}</p>
-      {#if reply.User !== null}
-        <p class="text-sm">By {reply.User.username}</p>
-      {/if}
-    </div>
+    {/if}
   {/each}
   <button
     class={`${
