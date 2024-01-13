@@ -7,7 +7,7 @@ async function query(model_name, input){
             prompt: input,
             stream: false,
             options: {
-                temperature: 0.0000001
+                temperature: 0.0
             }
         }),
     });
