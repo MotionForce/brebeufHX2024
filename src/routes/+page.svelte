@@ -6,10 +6,19 @@
   export let data: PageData;
 </script>
 
+{JSON.stringify(data.posts)}
 {#each data.posts as post}
   <div class="m-16">
-    <a href="/{post.id}">
-      <div class="card p-4 variant-filled-surface">
+    <a
+      href={post.warning !== "LOW" && post.warning !== "UNTESTED"
+        ? ""
+        : `/${post.id}`}
+    >
+      <div
+        class="m-16 {post.warning !== 'LOW' && post.warning !== 'UNTESTED'
+          ? 'blur'
+          : ''} card p-4 variant-filled-surface"
+      >
         <header class="card-header">
           <div class="flex flex-row items-center space-x-4">
             {#if post.User !== null}

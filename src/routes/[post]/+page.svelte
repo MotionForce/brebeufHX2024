@@ -13,12 +13,11 @@
   let show_reply_box = false;
 
   export let data: PageData;
-  $: post_id = data.post.id
+  $: post_id = data.post.id;
 </script>
 
-{JSON.stringify(data)}
 <div class="m-16 flex flex-col">
-  <div class="p-16 flex flex-col space-y-5 variant-filled-primary rounded-3xl">
+  <div class="p-16 mb-8 flex flex-col space-y-5 variant-filled-primary rounded-3xl">
     <div class="flex flex-row items-center space-x-4">
       {#if data.post.User !== null}
         <Avatar
@@ -80,7 +79,9 @@
       rows="4"
       class="textarea rounded-xl"
     ></textarea>
-    <input type="number" name="post_id" bind:value={post_id} hidden>
-    <button type="submit" class="btn variant-filled place-self-center">Send reply</button>
+    <input type="number" name="post_id" bind:value={post_id} hidden />
+    <button type="submit" class="btn variant-filled place-self-center"
+      >Send reply</button
+    >
   </form>
 </div>
