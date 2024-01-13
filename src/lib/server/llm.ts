@@ -14,7 +14,7 @@ export async function query_llm(text: string) {
         "graphical descriptions of violence",
         "slurs",
     ]
-    let prompt = "tell me if the following body of text contains <type>: " + text + ". If this body of text contains <type>, asnwer with the letter Y. If this body of text does not contain <type>, answer with the letter N. Only output one letter and nothing else.";
+    let prompt = "tell me if the following body of text contains <type>: " + text + ". If this body of text contains <type>, asnwer with the number 1. If this body of text does not contain <type>, answer with the numnber 0. Only output this number and nothing else. You need to output 0 or 1.";
     let most_severe = "LOW";
 
     for (let i = 0; i < bad_content_types.length; i++) {
@@ -35,7 +35,7 @@ export async function query_llm(text: string) {
         const answer: string = result.response;
         const trimed = answer.trim();
         console.log(trimed);
-        if (!trimed.startsWith("N.")) {
+        if (!trimed.includes("0")) {
             most_severe = "HIGH";
         }
     }

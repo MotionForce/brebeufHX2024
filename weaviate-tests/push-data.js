@@ -23,11 +23,11 @@ console.log(res);
 
 const query = await client.graphql.get()
     .withClassName('Profile')
-    .withFields(['bio'])
+    .withFields(['bio', 'user_id'])
     .withNearText({'concepts': bio2})
     .withLimit(2)
     .do();
 
 console.log(query);
-//const response = query.data.Get.Profile[0].bio;
-//console.log(response);
+const response = query.data.Get.Profile[0].user_id;
+console.log(response);

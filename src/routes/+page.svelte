@@ -11,7 +11,6 @@
 
   export let data: PageData;
 </script>
-
 {#if data.similar_users === null}<br />{:else}
   <div
     class="mx-32 my-8 card border-2 border-surface-400-500-token p-6 bg-surface-500-400-token flex flex-col space-y-4 overflow-x-scroll"

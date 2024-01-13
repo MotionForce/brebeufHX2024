@@ -3,6 +3,7 @@ import { error, fail, redirect } from "@sveltejs/kit";
 import type { Actions } from "./$types";
 import type { PageServerLoad, Actions } from "./$types";
 import { PrismaClientKnownRequestError } from "@prisma/client/runtime/library";
+import { upload_user_prefs } from "$lib/server/upload_user_prefs";
 
 export const load: PageServerLoad = async ({ locals }) => {
     const session = await locals.auth.validate();
@@ -50,6 +51,12 @@ export const actions: Actions = {
                 attributes: {}
             });
             locals.auth.setSession(session);
+            let interest_concat = "";
+            for (let i in interests){
+                interest_concat += interests[i] + ", ";
+            }
+            upload_user_prefs(user.userId, interest_concat);
+            console.log("Uploaded user with id " + user.userId + " with interests " + interest_concat);
         } catch (e) {
             if (
                 e instanceof PrismaClientKnownRequestError &&
@@ -59,6 +66,7 @@ export const actions: Actions = {
             }
             error(500, "An unknown error occurred");
         }
+
         throw redirect(302, "/");
     }
 };
